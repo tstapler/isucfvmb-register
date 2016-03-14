@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,  HttpResponseRedirect
+from django.contrib import messages
 from datetime import date
 
 from .forms import RegisterForm
@@ -12,8 +13,9 @@ def index(request):
         form = RegisterForm(request.POST)
 
         if form.is_valid():
-
-            return HttpResponseRedirect('/thanks/')
+            form.save()
+            messages.success(request, "Registration Completed Successfully!")
+            return HttpResponseRedirect('/')
     else:
         form = RegisterForm()
 

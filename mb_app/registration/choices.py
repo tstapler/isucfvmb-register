@@ -50,7 +50,7 @@ def shoe_size_gen(start, stop, step=.5):
         yield start
         start += step
 
-SHOE_SIZES = tuple((i,i) for i in shoe_size_gen(4, 14, .5))
+SHOE_SIZES = tuple((str(i),str(i)) for i in shoe_size_gen(4, 14, .5))
 
 TSHIRT_SIZES = (
     ('S', 'Small'),

@@ -3,6 +3,8 @@
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
 {% bootstrap_javascript %}
 
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/registration/style.css">
@@ -11,16 +13,23 @@
 {% bootstrap_messages %}
 
 {# Display a form #}
+<div class="jumbotron jumbotron-fluid" style="background-image: url({{ STATIC_URL }}/registration/step_show.jpg)">
+  <div class="panel panel-isu">
+              <h1 class="display-3 text-center">ISU Marching Band Registration</h1>
+              <p class="lead text-center">
+              Welcome to the {{ year }} registration!
+              Please answer all questions carefully as this information will be used the rest of the year.
+              </p>
+            </div>
+          </div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
       <div class="panel panel-isu ">
-        <div class="panel-header">
-          <h1 class="text-center">ISU Marching Band Registration</h1>
-          <p class="text-center">
-          Welcome to the {{ year }} registration!
-          Please answer all questions carefully as this information will be used the rest of the year.
-          </p>
+        <div class="panel-heading">
+        <h2 class="text-center">
+          Register
+        </h2>
         </div>
         <div class="panel-body">
           <form action="/index" method="post" class="form">

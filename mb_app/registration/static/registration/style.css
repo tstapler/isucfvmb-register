@@ -6,4 +6,9 @@ body {
   background: #F7C67B;
   box-shadow: 0 0 10px black; }
 
+.btn-primary {
+  background: #D6384D;
+  border-color: #D6384D;
+  box-shadow: 0 0 10px black; }
+
 /*# sourceMappingURL=style.css.map */

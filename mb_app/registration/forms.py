@@ -1,9 +1,13 @@
 from django import forms
 from django.core.validators import RegexValidator
 from registration.choices import *
+from registration.models import Student
 
 
-class RegisterForm(forms.Form):
+class RegisterForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = '__all__'
     first_name = forms.CharField(
         label="First Name",
         max_length=200
@@ -72,7 +76,8 @@ class RegisterForm(forms.Form):
     )
 
     senior_ceremonies = forms.BooleanField(
-        label="Are you participating in the senior ceremonies?"
+        label="Are you participating in the senior ceremonies?",
+        required=False
     )
 
     shoe_size = forms.ChoiceField(
