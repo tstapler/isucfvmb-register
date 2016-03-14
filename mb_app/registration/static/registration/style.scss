@@ -1,0 +1,16 @@
+$font-stack: Verdana, sans-serif;
+
+$primary-color: #D6384D;
+$secondary-color: #F7C67B;
+$font-color: white;
+
+
+body {
+	font: 100% $font-stack;
+	background: $primary-color;
+}
+
+.panel-isu {
+	background: $secondary-color;
+	box-shadow: 0 0 10px black;
+}

@@ -1,0 +1,14 @@
+# Ignore Python Virtualenv Files
+env
+
+# Ignore Rope files from editor
+.ropeproject
+
+# Ignore python compiled files
+*.pyc
+
+# Ignore SASS cached files
+.sass-cache
+
+# Ignore the database
+db.sqlite3
