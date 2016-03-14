@@ -12,13 +12,38 @@
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
-<html>
+<html ng-app="RegisterApp">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=">
 <title>Who Has Already Registered</title>
 </head>
 <body>
+{% verbatim %}
+<div ng-controller="RegisterListCtrl">
+  <h1>
+Students who Have Registered for Marching Band  
+  </h1>
+  <label> Search: <input ng-model=search_filter> </label>
+  <ul>
+    <li ng-repeat="student in students | filter:search_filter">
+    {{ student.first_name }} {{ student.last_name }} - {{ student.instrument }}
+    </li>
+  </ul>
+</div>
+{% endverbatim %}
+
+<!-- AngularJS -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
 
 {% swampdragon_settings %}
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/swampdragon.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/datamapper.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/angular/services.js"></script>
+ 
+
+<!-- To-do app -->
+<script type="text/javascript" src="{{ STATIC_URL }}/registration/app.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}/registration/controllers.js"></script>
+
 </body>
 </html>

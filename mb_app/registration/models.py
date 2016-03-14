@@ -9,6 +9,7 @@ from registration.choices import *
 # Create your models here.
 class Student (SelfPublishModel, models.Model):
     serializer_class = StudentSerializer
+
     first_name = models.CharField(
         max_length=200
     )

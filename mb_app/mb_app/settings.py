@@ -31,9 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'swampdragon',
-    'bootstrap3',
-    'registration.apps.RegistrationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'jquery',
+    'swampdragon',
+    'bootstrap3',
+    'registration',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -128,4 +128,4 @@ STATIC_URL = '/static/'
 
 # SwampDragon settings
 DRAGON_URL = 'http://localhost:9999/'
-SWAMP_DRAGON_CONNETION = ('sqampdragon.connections.sockjs_connection.DjangoSubscriberConnection', '/data')
+SWAMP_DRAGON_CONNECTION = ('swampdragon.connections.sockjs_connection.DjangoSubscriberConnection', '/data')
