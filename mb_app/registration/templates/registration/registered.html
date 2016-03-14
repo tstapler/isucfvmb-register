@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{# Load the tag library #}
+{% load bootstrap3 %}
+{% load swampdragon_tags %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+{% bootstrap_javascript %}
+
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/registration/style.css">
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=">
+<title>Who Has Already Registered</title>
+</head>
+<body>
+
+{% swampdragon_settings %}
+</body>
+</html>

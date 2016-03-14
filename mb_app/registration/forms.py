@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import extras
 from django.core.validators import RegexValidator
 from registration.choices import *
 from registration.models import Student
@@ -67,7 +68,7 @@ class RegisterForm(forms.ModelForm):
 
     movein_date = forms.DateField(
         label="Move In Date",
-        widget=forms.SelectDateWidget
+        widget=extras.SelectDateWidget()
     )
 
     years_tenure = forms.ChoiceField(

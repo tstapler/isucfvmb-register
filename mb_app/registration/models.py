@@ -1,10 +1,14 @@
 from __future__ import unicode_literals
 from django.core.validators import RegexValidator
 from django.db import models
+from swampdragon.models import SelfPublishModel
+from registration.serializers import StudentSerializer
 from registration.choices import *
 
+
 # Create your models here.
-class Student (models.Model):
+class Student (SelfPublishModel, models.Model):
+    serializer_class = StudentSerializer
     first_name = models.CharField(
         max_length=200
     )

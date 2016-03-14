@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'swampdragon',
     'bootstrap3',
     'registration.apps.RegistrationConfig',
     'django.contrib.admin',
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.static',
+                'mb_app.context_processors.dragon_url'
             ],
         },
     },
@@ -123,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# SwampDragon settings
+DRAGON_URL = 'http://localhost:9999/'
+SWAMP_DRAGON_CONNETION = ('sqampdragon.connections.sockjs_connection.DjangoSubscriberConnection', '/data')

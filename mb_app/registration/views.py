@@ -21,5 +21,6 @@ def index(request):
 
     return render(request, 'registration/index.html', {'year': date.today().year, 'registration': form})
 
-def register(request):
-    pass
+def view_registered(request):
+    return render(request, 'registration/registered.html')
+
