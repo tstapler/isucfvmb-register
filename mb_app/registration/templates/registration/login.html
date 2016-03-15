@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Login</title>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/registration/style.css">
+</head>
+<body>
+
+{# Display a form #}
+
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-mb-offset-3">
+  <div class="panel panel-isu">
+<div class="panel-heading">
+  <h2 class="text-center">
+     Login
+  </h2>
+</div>
+    <div class="panel-body">
+      <form action="/login" method="post" class="form">
+          {% csrf_token %}
+          {% bootstrap_form login %}
+          {% buttons %}
+              <button type="submit" class="btn btn-primary center-block">
+                  {% bootstrap_icon "ok" %} Submit
+              </button>
+          {% endbuttons %}
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>

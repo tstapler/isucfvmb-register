@@ -5,6 +5,10 @@ from registration.choices import *
 from registration.models import Student
 
 
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=40)
+    password = forms.CharField(max_length=200, widget=forms.PasswordInput())
+
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = Student
