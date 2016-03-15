@@ -3,6 +3,27 @@ var TodoControllers = angular.module('RegisterControllers', []);
 TodoControllers.controller('RegisterListCtrl', ['$scope', '$dragon', function ($scope, $dragon) {
     $scope.students = [];
     $scope.channel = 'registration';
+    $scope.current_method = "last_name"
+
+    $scope.sorting_methods = ["Submission Time", "Name", "Section"];
+    $scope.current_label = "Name";
+    $scope.reversed = false;
+
+    $scope.select_sort_method = function (label) {
+	    $scope.current_label = label;
+
+	    if( label === "Submission Time")
+		{
+			$scope.current_method = "submission_time"
+		    }
+		else if( label === "Section"){
+			$scope.current_method = "instrument"
+		}
+		else {
+		$scope.current_method = "last_name"
+		}
+
+    }
 
     $dragon.onReady(function() {
             $dragon.subscribe('student', $scope.channel, {}).then(function(response) {

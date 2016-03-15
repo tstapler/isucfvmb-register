@@ -1,49 +1,81 @@
-<!DOCTYPE html>
-{# Load the tag library #}
-{% load bootstrap3 %}
-{% load swampdragon_tags %}
+<!DOCTYPE html> 
+{# Load the tag library #} 
+{% load bootstrap3 %} 
+{% load swampdragon_tags %} 
 {# Load CSS and JavaScript #}
-{% bootstrap_css %}
-
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
-{% bootstrap_javascript %}
+{% bootstrap_css %} {% bootstrap_javascript %}
 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/registration/style.css">
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/registration/style.css"> 
 
-{# Display django.contrib.messages as Bootstrap alerts #}
+{# Display django.contrib.messages as Bootstrap alerts #} 
 {% bootstrap_messages %}
 <html ng-app="RegisterApp">
+
 <head>
-<meta http-equiv="content-type" content="text/html; charset=">
-<title>Who Has Already Registered</title>
+  <meta http-equiv="content-type" content="text/html; charset=">
+  <title>Who Has Already Registered</title>
 </head>
+
 <body>
-{% verbatim %}
-<div ng-controller="RegisterListCtrl">
-  <h1>
-Students who Have Registered for Marching Band  
-  </h1>
-  <label> Search: <input ng-model=search_filter> </label>
-  <ul>
-    <li ng-repeat="student in students | filter:search_filter">
-    {{ student.first_name }} {{ student.last_name }} - {{ student.instrument }}
-    </li>
-  </ul>
-</div>
-{% endverbatim %}
+  {% verbatim %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        <div class="panel panel-isu" ng-controller="RegisterListCtrl">
+          <div class="panel-heading">
+            <h1 class="text-center"> Registered </h1>
+          </div>
+          <div class="panel-body">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  {{ current_label }} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="sort_method in sorting_methods" class="dropdown-item"><a ng-click="select_sort_method(sort_method)" href="#">{{ sort_method }}</a></li>
+                </ul>
+              </span>
+                <input class="form-control text-center" id="search" placeholder="Search Filter" type="text" ng-model=search_filter>
+                <div class="input-group-btn">
+                  <button ng-click="reversed= !reversed" class="btn btn-default" type="button"> Reverse </button>
+              </div>
+            </div>
+            <hr/>
+            <table class="table table-bordered table-hover">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>Name</th>
+                  <th>Section</th>
+                  <th>Submission Time</th>
+                </tr>
+              </thead>
+                  <tr ng-repeat="student in students | filter:search_filter | orderBy:current_method:reversed">
+                   <td>{{ student.last_name }}, {{ student.first_name }}</td>
+                   <td>{{ student.instrument }}</td>
+                   <td>{{ student.submission_time | date:'hh:mm a - dd MMM yyyy'}}</td>
+                  </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endverbatim %}
 
-<!-- AngularJS -->
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
+  <!-- AngularJS -->
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
 
-{% swampdragon_settings %}
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/swampdragon.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/datamapper.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/angular/services.js"></script>
- 
+  {% swampdragon_settings %}
+  <script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/swampdragon.min.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/datamapper.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/angular/services.js"></script>
 
-<!-- To-do app -->
-<script type="text/javascript" src="{{ STATIC_URL }}/registration/app.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}/registration/controllers.js"></script>
+
+  <!-- To-do app -->
+  <script type="text/javascript" src="{{ STATIC_URL }}/registration/app.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}/registration/controllers.js"></script>
 
 </body>
+
 </html>

@@ -10,6 +10,8 @@ from registration.choices import *
 class Student (SelfPublishModel, models.Model):
     serializer_class = StudentSerializer
 
+    submission_time = models.DateTimeField(auto_now_add=True)
+
     first_name = models.CharField(
         max_length=200
     )

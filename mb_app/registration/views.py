@@ -24,3 +24,5 @@ def index(request):
 def view_registered(request):
     return render(request, 'registration/registered.html')
 
+def return_data(request):
+    pass
